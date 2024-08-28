@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Book Owl{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>Welcome to Book Owl</h1>
+    <p>Convert your PDFs to audio with ease</p>
+</section>
+<section class="features">
+    <div class="feature">
+        <i class="fas fa-file-pdf"></i>
+        <h3>Upload PDF</h3>
+        <p>Simply upload your PDF file</p>
+    </div>
+    <div class="feature">
+        <i class="fas fa-cogs"></i>
+        <h3>Convert</h3>
+        <p>We'll convert it to audio</p>
+    </div>
+    <div class="feature">
+        <i class="fas fa-headphones"></i>
+        <h3>Listen</h3>
+        <p>Download and enjoy your audiobook</p>
+    </div>
+</section>
+<section class="cta">
+    <h2>Ready to get started?</h2>
+    <a href="{{ url_for('main.convert') }}" class="btn">Convert Now</a>
+</section>
+{% endblock %}

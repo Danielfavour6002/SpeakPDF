@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Subscribe - Book Owl{% endblock %}
+
+{% block content %}
+<section class="payment">
+    <h2>Subscribe to Book Owl</h2>
+    <form id="paymentForm">
+        <div class="form-group">
+            <label for="email-address">Email Address</label>
+            <input type="email" id="email-address" required />
+        </div>
+        <div class="form-group">
+            <label for="amount">Amount (in Naira)</label>
+            <input type="number" id="amount" required />
+        </div>
+        <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" />
+        </div>
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" />
+        </div class="form-submit">
+        <button type="submit" class="btn">Pay Now</button>
+        </div>
+    </form>
+</section>
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script src="{{ url_for('static', filename='payment.js') }}"></script>
+{% endblock %}
+

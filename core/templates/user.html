@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Users - Book Owl</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Book Owl</h1>
+        <p class="tagline">List of All Users</p>
+    </header>
+    <main>
+        <div class="users-container">
+            <h2>Users</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>User Name</th>
+                        <th>Email</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.user_name }}</td>
+                        <td>{{ user.email }}</td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Book Owl. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Book Owl{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-book-reader"></i>
+                <span>Book Owl</span>
+            </div>
+            <ul>
+                <li><a href="{{ url_for('main.home') }}">Home</a></li>
+                <li><a href="{{ url_for('main.convert') }}">Convert</a></li>
+                <li><a href="{{ url_for('main.payment') }}">Subscribe</a></li>
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+                    <li><a href="{{ url_for('auth.signup') }}">Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Book Owl. All rights reserved.</p>
+    </footer>
+
+    
+</body>
+</html>

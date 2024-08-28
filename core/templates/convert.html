@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Convert - Book Owl{% endblock %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+<h1>Welcome {{ current_user.user_name }} </h1>
+{% endif%}
+<section class="convert">
+    <h2>Upload Your PDF</h2>
+    <form action="{{ url_for('main.convert') }}" method="post" enctype="multipart/form-data">
+        <div class="file-input-wrapper">
+            <input type="file" name="file" id="file" required accept=".pdf">
+            <label for="file">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <span>Choose a PDF file</span>
+            </label>
+            <span id="file-name" class="file-name"></span>
+        </div>
+        <button type="submit" class="btn">Convert to Audio</button>
+    </form>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.getElementById('file').addEventListener('change', function() {
+        var fileName = this.files[0].name;
+        document.getElementById('file-name').textContent = fileName;
+    });
+</script>
+{% endblock %}
