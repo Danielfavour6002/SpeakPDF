@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 from flask_login  import LoginManager, current_user
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
-from celery import Celery
+# from celery import Celery
 import datetime
 
 
@@ -17,10 +17,10 @@ db = SQLAlchemy()
 
 DB_NAME = 'database.db'
 
-def make_celery(app):
-    celery = Celery(app.import_name, broker=app.config['CELERY_BROKER_URL'])
-    celery.conf.update(app.config)
-    return celery
+# def make_celery(app):
+#     celery = Celery(app.import_name, broker=app.config['CELERY_BROKER_URL'])
+#     celery.conf.update(app.config)
+#     return celery
 
 def create_app():
     app = Flask(__name__)
@@ -33,7 +33,7 @@ def create_app():
     app.config['CELERY_BROKER_URL'] = 'redis://localhost:6379/0'
     app.config['CELERY_RESULT_BACKEND'] = 'redis://localhost:6379/0'
 
-    celery = make_celery(app)
+    # celery = make_celery(app)
 
     db.init_app(app)
     migrate = Migrate(app, db)
@@ -86,6 +86,6 @@ def create_app():
         os.makedirs(app.config['OUTPUT_FOLDER'], exist_ok=True)
         db.create_all()
 
-    return app, celery
+    return app
 
 
